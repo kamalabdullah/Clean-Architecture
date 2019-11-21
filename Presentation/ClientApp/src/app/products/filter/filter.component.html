@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row h-100 justify-content-center align-items-center">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-xs-6 justify-content-center filterRow">
+                 <div class='row justify-content-center'>
+                     <div class='col-xs-6'>
+                          <span id="ex6CurrentSliderValLabel">Min Price: <span id="ex6SliderVal">{{productFilter.minPrice | currency}}</span></span>
+                      </div>
+                 </div>
+                <div class='row justify-content-center'>
+                    <div class='col-xs-6'>
+                         <mv-slider [(value)]="productFilter.minPrice" [min]="100" [max]="1000" [enabled]="true" (change)="changeMin()"></mv-slider>
+                    </div>
+                </div>
+                <div class="col-xs-6 justify-content-center filterRow">
+                <div class='row justify-content-center'>
+                        <div class='col-xs-6'>
+                             <span id="ex6CurrentSliderValLabel">Max Price: <span id="ex6SliderVal">{{productFilter.maxPrice | currency}}</span></span>
+                         </div>
+                    </div>
+                   <div class='row justify-content-center'>
+                       <div class='col-xs-6'>
+                            <mv-slider [(value)]="productFilter.maxPrice" [min]='100' [max]="2000" [enabled]="true" (change)="changeMax()"></mv-slider>
+                       </div>
+                   </div>
+            </div>
+            <div class="col-xs-6 justify-content-center filterRow">
+            <div class="row float-center">
+                    <button type="button" class="float-center btn btn-success btn-lg btn-submit btn-filter" (click)="applyFilter()">Aplly Filter</button>
+              </div>
+            </div>
+            <div class="col-xs-6 justify-content-center filterRow">
+                    <div class="row float-center">
+                            <button type="button" class="float-center btn btn-primary btn-lg btn-submit btn-filter" (click)="clearFilter()">Clear Filter</button>
+                      </div>
+                    </div>
+            </div>
+        </div>
+       
+  </div>
+</div>

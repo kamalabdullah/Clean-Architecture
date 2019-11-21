@@ -1,0 +1,14 @@
+.LogInContainer{
+    background-color:antiquewhite;
+    height: 100vh;
+}
+.LogInRow{
+    margin: 20px 20px 20px 20px;
+}
+.eshopLogInText{
+    margin-left: 10px;
+    font-weight: bold;
+}
+.btn-login{
+    width: 150px;
+}

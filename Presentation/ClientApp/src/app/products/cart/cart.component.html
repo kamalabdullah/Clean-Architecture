@@ -1,0 +1,62 @@
+<div *ngIf='uniqOrderList && uniqOrderList.length'>
+<div class='table-responsive'>
+        <table class='table table-striped'
+               *ngIf='uniqOrderList && uniqOrderList.length'>
+          <thead>
+            <tr class="d-flex bg-primary text-white">
+              <th scope="col" class="col-md-3"></th>
+              <th scope="col" class="col-md-3"></th>
+              <th scope="col" class="col-md-2">Price</th>
+              <th scope="col" class= "col-md-2">Quantity</th>
+              <th scope="col" class= "col-md-2">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let product of uniqOrderList' class="d-flex">
+              <th class="col-md-3">
+                <img [src]='product.imageURL' class='img-responsive col-md-3' 
+                     [title]='product.name'>
+              </th>
+              <td class="col-md-3">
+                 <div class='container-fluid'>
+                    <div class='row justify-content-center'>
+                         <div class='col-xs-6'>
+                                        <a [routerLink]="['/products', product.id]">
+                                            {{ product.name }}
+                                        </a>
+                          </div>
+                     </div>
+                     <div class='row justify-content-center'>
+                            <div class='col-xs-6'>
+                                    <p class="text-success">In Stock</p>
+                             </div>
+                        </div>
+                        <div class='row justify-content-center'>
+                                <div class='col-xs-6'>
+                                        <button type="button" (click)='deleteItemFromCart(product.id)' class="btn btn-link">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>  delete
+                                        </button>
+                            </div>
+                        </div>
+                 </div>
+                </td>
+              <th class="col-md-2">{{ product.price | currency:'USD':'symbol':'1.2-2'}}</th>
+              <th class="col-md-2">{{ product.count }}</th>
+              <th class="col-md-2">{{ product.count * product.price | currency:'USD':'symbol':'1.2-2'}}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lb-total">
+         <p class="font-weight-bold">Total Amount: {{totalAmount | currency:'USD':'symbol':'1.2-2'}}</p>
+     </div>
+      <hr>
+      <div class="row float-right">
+            <button type="button" class="float-right btn btn-success btn-lg btn-submit" (click)="submitUserProducts()">Submit</button>
+      </div>
+</div>
+<div *ngIf='!uniqOrderList || !uniqOrderList.length'>
+        <div class="alert alert-warning" role="alert">
+                <strong>Warning!</strong> Your cart is empty please go to product list and choose items <a [routerLink]="['/products']" class="alert-link">Go To Product List</a>.
+              </div>
+</div>

@@ -1,0 +1,21 @@
+ <app-nav-menu [orderlist]='orderProduct ? orderProduct : null'></app-nav-menu>
+
+<div class="container" id="app" style="margin-top: 70px;">
+        <div class="row">
+            <!-- <div *ngFor="let item of products  | orderBy: price : true : false" class="col-lg-4 col-sm-6 col-xs-12 my-1"> -->
+                <div *ngFor="let item of products" class="col-lg-4 col-sm-6 col-xs-12 my-1">
+                    <a [routerLink]="['/products', item.id]"> 
+                <div class="card h-100">
+                    <img [src]="item.imageURL" class="card-img-top">
+                    <div class="card-body">
+                        <div class="card-title" style="font-weight: bold; color: black;">{{ item.name }}</div>
+                        <div>
+                            <span class="badge badge-pill badge-danger" >{{ item.price | currency }}</span>
+                        </div>
+                        <div class="card-title" style="color: black;">{{ item.description }}</div>
+                    </div>
+                </div>
+            </a> 
+            </div>
+        </div>
+</div>

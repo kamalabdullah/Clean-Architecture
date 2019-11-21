@@ -1,0 +1,39 @@
+
+    <!-- <app-nav-menu></app-nav-menu> -->
+<form [formGroup]="angForm" novalidate>
+<div class="container-fluid  LogInContainer">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-xs-6">
+    <div class='row justify-content-center LogInRow'>
+        <div class='col-xs-6'>
+        <i class="fas fa-shopping-cart"></i>
+        <span class="eshopLogInText">eShop.com</span>
+        </div>
+    </div>
+      <div class='row justify-content-center LogInRow'>
+        <div class='col-xs-6'>
+          <input type='text' formControlName="userName"class="form-control form-control-sm login-input" placeholder="user name"/>
+        </div>
+      </div>
+      <div class='row justify-content-center LogInRow'>
+      <div  *ngIf="angForm.controls['userName'].invalid && (angForm.controls['userName'].dirty || angForm.controls['userName'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['userName'].errors.required">
+              User Name is required.
+          </div>
+          <div *ngIf="angForm.controls['userName'].errors.pattern && !angForm.controls['userName'].errors.required">
+              User Name is invalid.
+          </div>
+      </div>
+      <div class="alert-danger" *ngIf="errorMessage">
+          {{errorMessage}}
+      </div>
+      </div>
+      <div class='row justify-content-center'>
+          <div class='col-xs-6'>
+              <button type="button" (click)='getUserByName()' [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary btn-login">LogIn</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</form>
